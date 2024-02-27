@@ -3,6 +3,7 @@ import { Image, Text, Touchable, TouchableOpacity, View } from "react-native";
 import StyleDashboard from "../../assets/style/StyleDashboard";
 import { BoxIcons, StockIcons, Users } from "../../assets";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { PresentationChartBarIcon } from "react-native-heroicons/outline";
 
 const classes = StyleDashboard;
 
@@ -33,6 +34,14 @@ const Dashboard = ({ navigation }) => {
         navigation.navigate('Scan Stok');
     }
 
+    const goToProduct = () => {
+        navigation.navigate('Product');
+    }
+
+    const goToDelivery = () => {
+        navigation.navigate('Delivery');
+    }
+
 
     return (
         <View style={classes.container}>
@@ -46,10 +55,14 @@ const Dashboard = ({ navigation }) => {
                     <Image source={StockIcons} style={classes.iconList} />
                     <Text style={classes.textList}>Stok Opname</Text>
                 </TouchableOpacity>
-                <View style={classes.listNav}>
+                <TouchableOpacity style={classes.listNav} onPress={goToProduct}>
                     <Image source={BoxIcons} style={classes.iconList} />
                     <Text style={classes.textList}>Produk</Text>
-                </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={classes.listNav} onPress={goToDelivery}>
+                    <PresentationChartBarIcon size={35} color={'#B784B7'} style={classes.iconList} />
+                    <Text style={classes.textList}>Delivery Product</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
